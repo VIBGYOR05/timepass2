@@ -1,0 +1,144 @@
+1st program fsd
+
+
+import React, { useState } from 'react';
+import './App.css';
+
+const App = () => {
+  const [input, setInput] = useState('');
+
+  const handleClick = (value) => {
+    // Only add operators if there's already an input
+    if (value === '+' || value === '-' || value === '*' || value === '/') {
+      if (input === '') return;
+      // Don't add operators if the last character is already an operator
+      if (['+', '-', '*', '/'].includes(input[input.length - 1])) return;
+    }
+    setInput(input + value);
+  };
+
+  const calculateResult = () => {
+    try {
+      setInput(eval(input).toString());
+    } catch (error) {
+      setInput('Error');
+    }
+  };
+
+  const clearInput = () => {
+    setInput('');
+  };
+
+  const clearLastInput = () => {
+    setInput(input.slice(0, -1));
+  };
+
+  return (
+    <div className="calculator">
+      <div className="display">{input}</div>
+      <div className="buttons">
+        <button onClick={clearInput} className="clear">AC</button>
+        <button onClick={clearLastInput} className="clear">C</button>
+        <button onClick={() => handleClick('7')}>7</button>
+        <button onClick={() => handleClick('8')}>8</button>
+        <button onClick={() => handleClick('9')}>9</button>
+        <button onClick={() => handleClick('+')} className="operator">+</button>
+        <button onClick={() => handleClick('4')}>4</button>
+        <button onClick={() => handleClick('5')}>5</button>
+        <button onClick={() => handleClick('6')}>6</button>
+        <button onClick={() => handleClick('-')} className="operator">-</button>
+        <button onClick={() => handleClick('1')}>1</button>
+        <button onClick={() => handleClick('2')}>2</button>
+        <button onClick={() => handleClick('3')}>3</button>
+        <button onClick={() => handleClick('')} className="operator"></button>
+        <button onClick={() => handleClick('0')}>0</button>
+        <button onClick={() => handleClick('.')} className="decimal">.</button>
+        <button onClick={() => handleClick('/')} className="operator">/</button>
+        <button onClick={calculateResult} className="equals">=</button>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+
+
+
+.calculator {
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.calculator-screen {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+.calculator-buttons button {
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.calculator-buttons button:hover {
+  background-color: #f0f0f0;
+}
+
+.calculator-result {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+
+
+
+4th program
+
+function checkEvenOrOdd(number) {
+    return number % 2 === 0 ? 'Even' : 'Odd';
+  }
+  
+ 
+  function findGreatestNumber(num1, num2, num3) {
+    return Math.max(num1, num2, num3);
+  }
+  
+  
+  const num1 = parseInt(process.argv[2]);
+  const num2 = parseInt(process.argv[3]);
+  const num3 = parseInt(process.argv[4]);
+  
+  
+  console.log(Number ${num1} is ${checkEvenOrOdd(num1)}.);
+  console.log(Number ${num2} is ${checkEvenOrOdd(num2)}.);
+  console.log(Number ${num3} is ${checkEvenOrOdd(num3)}.);
+  
+
+  const greatestNumber = findGreatestNumber(num1, num2, num3);
+  console.log(The greatest number among ${num1}, ${num2}, and ${num3} is ${greatestNumber}.);
+
+to run
+  node filename num1 num2 num3
+
+example:-
+
+ node ans.js 1 17 45
