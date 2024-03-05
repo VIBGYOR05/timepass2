@@ -1,0 +1,1 @@
+"mongodb+srv://ankush56086:alpha123456@cluster0.x3rwawu.mongodb.net/paytm-app"
